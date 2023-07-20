@@ -12,7 +12,7 @@ export function SearchPage () {
         <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
           {/* Img div */}
           <div class="border-solid border-2 border-gray-400 w-20 h-20">
-          <img src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/daph/src/public/record.gif?raw=true" alt="spinning record gif"/>
+          <img src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/main/src/public/record.gif?raw=true" alt="spinning record gif"/>
           </div>
           {/* Text div */}
           <div class="w-3/4">
@@ -22,7 +22,7 @@ export function SearchPage () {
           </div>
           {/* Buttons on end */}
           <div>
-            <button class="p-1 bg-gray-200 border-solid border-2 border-gray-600">Add to Cart</button>
+            <button class="rounded p-1 bg-gray-200 border-solid border-2 border-gray-600">Add to Cart</button>
             <p>Price</p>
             <p>Stock</p>
           </div>
@@ -31,7 +31,7 @@ export function SearchPage () {
            <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
           {/* Img div */}
           <div class="border-solid border-2 border-gray-400 w-20 h-20">
-          <img src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/daph/src/public/record.gif?raw=true" alt="spinning record gif"/>
+          <img src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/main/src/public/record.gif?raw=true" alt="spinning record gif"/>
           </div>
           {/* Text div */}
           <div class="w-3/4">
@@ -50,7 +50,7 @@ export function SearchPage () {
            <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
           {/* Img div */}
           <div class="border-solid border-2 border-gray-400 w-20 h-20">
-          <img src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/daph/src/public/record.gif?raw=true" alt="spinning record gif"/>
+          <img src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/main/src/public/record.gif?raw=true" alt="spinning record gif"/>
           </div>
           {/* Text div */}
           <div class="w-3/4">

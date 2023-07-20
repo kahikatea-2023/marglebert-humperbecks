@@ -12,10 +12,33 @@ const app = new Elysia()
       <Layout>
         <body class="bg-slate-300">
           <Header />
-          <SearchPage/>
+          {/* TODO: Will need to add a HomePage component here */}
+          {/* <HomePage/> */}
+          {/* <SearchInput/> */}
         </body>
       </Layout>
     )
+  )
+  .get('/search', ({html}) => 
+  html(
+    <Layout>
+        <body class="bg-slate-300">
+          <Header />
+          {/* <SearchInput/> */}
+          <SearchPage/>
+        </body>
+      </Layout>
+  ))
+  .post('/search', ({html}) =>
+  // Returns a re-directs:
+    {/* add if condition if the q param exists or not */}
+  // html(
+  //   <Layout>
+  //       <body class="bg-slate-300">
+  //         <Header />
+  //       </body>
+  //     </Layout>
+  // )
   )
   // no need to have a public folder
   // this route will serve the css as a static file
