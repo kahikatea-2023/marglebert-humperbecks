@@ -5,6 +5,7 @@ import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { SearchInput } from './components/SearchInput'
+import { HomePage } from './components/HomePage'
 
 const app = new Elysia()
   .use(html())
@@ -14,7 +15,7 @@ const app = new Elysia()
         <body class="bg-slate-300">
           <Header />
           {/* TODO: Will need to add a HomePage component here */}
-          {/* <HomePage/> */}
+          <HomePage />
         </body>
       </Layout>
     )
