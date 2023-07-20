@@ -26,6 +26,19 @@ turso db create
 turso db tokens create <db-logical-name>
 ```
 
+To migrate the schema:
+
+```bash
+bun run db:push
+```
+
+Because our db is hosted on a remote server, we need to use drizzle studio to connect to it
+
+```bash
+bun run db:studio
+# this will be our "sqlite viewer"
+```
+
 ## MVP
 
 Build the following pages from [https://www.marbecks.co.nz/](https://www.marbecks.co.nz/) :
