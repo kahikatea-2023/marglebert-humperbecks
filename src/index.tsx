@@ -18,6 +18,7 @@ const BaseHtml = ({ children }: elements.Children) => `
 
 ${children}
 `;
+
 const app = new Elysia()
   .use(html())
   .get("/", ({ html }) =>
@@ -27,7 +28,11 @@ const app = new Elysia()
       </BaseHtml>,
     ),
   )
+  // no need to have a public folder
+  // this route will serve the css as a static file
   .get("/styles.css", () => Bun.file("./src/input.css"))
   .listen(3000);
 
-console.log(`🦊 Elysia is running at on port ${app.server.port}...`);
+console.log(
+  `🦊 Elysia is running at on port http://${app.server.hostname}:${app.server.port}...`,
+);
