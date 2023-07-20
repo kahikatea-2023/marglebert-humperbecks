@@ -1,11 +1,17 @@
-import { InferModel } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { InferModel } from 'drizzle-orm'
+import { integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 // this is the only table we need to define
-export const todos = sqliteTable("albums", {
-  id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-  content: text("name").notNull(),
-  // TODO: add release date, artist, price
-});
+export const albums = sqliteTable('albums', {
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  title: text('title').notNull(),
+  artist: text('artist').notNull(),
+  releaseDate: integer('release_date', { mode: 'number' }).notNull(),
+  price: real('price').notNull(),
+  format: text('format').notNull(),
+  availability: integer('availability', { mode: 'boolean' }),
+  img: text('format').notNull(),
+})
 
-export type Todo = InferModel<typeof todos>;
+// This is handy type that can be used for insert and select
+export type Albums = InferModel<typeof albums>
