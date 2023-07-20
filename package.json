@@ -8,7 +8,8 @@
     "dev:server": "bun run --hot --watch src/index.tsx",
     "dev:css": "tailwindcss -i src/input.css -o src/styles/output.css --watch",
     "db:push": "bunx drizzle-kit push:sqlite",
-    "db:studio": "bunx drizzle-kit studio"
+    "db:studio": "bunx drizzle-kit studio",
+    "db:seed": "bun run src/db/seed.ts"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
