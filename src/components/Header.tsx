@@ -14,6 +14,7 @@ export function Header() {
           </h2>
         </div>
       </div>
+      {/* TODO: This needs to be moved to the left  */}
       <div class="place-self-end">
         <p class="text-white uppercase">
           New Zealand's Leading Music Specialist
