@@ -1,12 +1,12 @@
 {
   "name": "marglebert-humperbecks",
-  "module": "src/index.ts",
+  "module": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "start": "bun run src/index.ts",
-    "dev": "npm-p run dev:*",
-    "dev:server": "bun run src/index.ts",
-    "dev:css": "tailwindcss -i src/styles/input.css -o src/css/output.css --watch"
+    "start": "bun run src/index.tsx",
+    "dev": "concurrently \"bun run dev:server\" \"bun run dev:css\"",
+    "dev:server": "bun run --watch src/index.tsx",
+    "dev:css": "tailwindcss -i src/input.css -o src/styles/output.css --watch"
   },
   "devDependencies": {
     "bun-types": "latest"
