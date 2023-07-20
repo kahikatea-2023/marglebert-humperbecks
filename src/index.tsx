@@ -3,6 +3,7 @@ import { html } from '@elysiajs/html'
 import * as elements from 'typed-html'
 import { Layout } from './layout'
 import { Header } from './components/Header'
+import { SearchPage } from './components/SearchPage'
 
 const app = new Elysia()
   .use(html())
@@ -11,6 +12,7 @@ const app = new Elysia()
       <Layout>
         <body class="bg-slate-300">
           <Header />
+          <SearchPage/>
         </body>
       </Layout>
     )
