@@ -4,6 +4,10 @@ export function Header() {
   return (
     <header class="bg-red-500 flex items-stretch">
       <div class="flex items-center gap-4">
+      <div class="w-20 h-20">
+      <h1>Image</h1>
+      <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="image"/>
+      </div>
         <h1 class="text-7xl font-bold leading-tight text-gray-900">Marbecks</h1>
         <div>
           <h1 class="text-3xl font-bold leading-tight text-gray-900 tracking-tighter">
