@@ -4,28 +4,23 @@ import * as elements from 'typed-html'
 import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
-import { SearchInput } from './components/SearchInput'
+import { HomePage } from './components/HomePage'
 
 const app = new Elysia()
   .use(html())
   .get('/', ({ html }) =>
     html(
       <Layout>
-        <body class="bg-slate-300">
-          <Header />
-          {/* TODO: Will need to add a HomePage component here */}
-          {/* <HomePage/> */}
-        </body>
+        <Header />
+        <HomePage />
       </Layout>
     )
   )
   .get('/search', ({ html }) =>
     html(
       <Layout>
-        <body class="bg-slate-300">
-          <Header />
-          <SearchPage />
-        </body>
+        <Header />
+        <SearchPage />
       </Layout>
     )
   )
