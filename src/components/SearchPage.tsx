@@ -1,45 +1,38 @@
 import * as elements from 'typed-html'
 import { Album } from '../db/schema'
+import { Card } from './Card'
 
-export function SearchPage({ results }: { results: Album[] }) {
+export function SearchPage({
+  results,
+  query,
+}: {
+  query: Record<string, unknown>
+  results: Album[]
+}) {
   return (
     <body>
       <h1>Search Results</h1>
       <div>
         <h2>Displaying Items 1- 20 of 1409</h2>
+        <section>
+          <button>Sort by</button>
+        </section>
         {/* Card List */}
-        <div class="flex flex-col p-3 border-solid border-2 border-gray-400">
-          {results.map(
-            ({
-              artist,
-              title,
-              releaseDate,
-              img,
-              availability,
-              format,
-              price,
-            }) => (
-              <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
-                {/* Img div */}
-                <div class="border-solid border-2 border-gray-400 w-20 h-20">
-                  <img src={`${img}`} alt="spinning record gif" />
-                </div>
-                {/* Text div */}
-                <div class="w-3/4">
-                  <p>{artist}</p>
-                  <p>{title}</p>({releaseDate})<p>Description</p>
-                </div>
-                {/* Buttons on end */}
-                <div>
-                  <button class="rounded p-1 bg-gray-200 border-solid border-2 border-gray-600">
-                    Add to Cart
-                  </button>
-                  <p>Price</p>
-                  <p>Stock</p>
-                </div>
-              </div>
-            )
-          )}
+        <div class="text-left">
+          <a href={`/search?q=${query.q}&sort=artist`}>artist</a>
+          <a href={`/search?q=${query.q}&sort=title`}>title</a>
+          <a href={`/search?q=${query.q}&sort=price`}>price</a>
+          <a href={`/search?q=${query.q}&sort=releaseDate`}>Release Date</a>
+          <a href={`/search?q=${query.q}&sort=format`}>Format</a>
+          <a href={`/search?q=${query.q}&sort=availability`}>Availability</a>
+        </div>
+        <div
+          id="results"
+          class="flex flex-col p-3 border-solid border-2 border-gray-400"
+        >
+          {results.map((result) => (
+            <Card {...result} />
+          ))}
         </div>
       </div>
     </body>

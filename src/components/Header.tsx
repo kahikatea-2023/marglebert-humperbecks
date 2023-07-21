@@ -1,7 +1,11 @@
 import * as elements from 'typed-html'
 import { SearchInput } from './SearchInput'
 
-export function Header() {
+interface Props {
+  query?: Record<string, unknown>
+}
+
+export function Header(props: Props) {
   return (
     <header>
       <div class="bg-red-500 flex items-stretch">
@@ -31,7 +35,7 @@ export function Header() {
           </p>
         </div>
       </div>
-      <SearchInput />
+      <SearchInput query={props ? props.query : undefined} />
     </header>
   )
 }

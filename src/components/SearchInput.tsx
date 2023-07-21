@@ -1,6 +1,10 @@
 import * as elements from 'typed-html'
 
-export function SearchInput() {
+interface Props {
+  query?: Record<string, unknown>
+}
+
+export function SearchInput(props: Props) {
   return (
     <div class="flex flex-row justify-end">
       <form action="/search" method="get">
@@ -11,6 +15,7 @@ export function SearchInput() {
           type="search"
           name="q"
           placeholder="Search for an album"
+          value={props.query?.q as string}
         />
         <button class="border-solid border-2 border-gray-400">Search</button>
       </form>

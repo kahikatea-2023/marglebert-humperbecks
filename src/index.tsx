@@ -5,15 +5,16 @@ import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
-import { Albums, albums } from './db/schema'
+import { Album, albums } from './db/schema'
 import { db } from './db'
+import { Card } from './components/Card'
 
 // Daph changes:
 
 const app = new Elysia()
   .use(html())
   .get('/', ({ html }) => {
-    const albums: Albums[] = [
+    const albums: Album[] = [
       {
         id: 1,
         title: 'The Miseducation of Lauryn Hill',
@@ -64,15 +65,24 @@ const app = new Elysia()
       </Layout>
     )
   })
-  .get('/search', async ({ html, query }) => {
+  .get('/search', async ({ html, query, headers }) => {
     const searchQuery = query.q
+    const sort = query.sort
+    const order = query.order
+
+    console.log({ sort, order })
+    if (headers['hx-request'] === 'true') {
+      const results = await db.select().from(albums).all()
+      return html(<Card {...results[0]} />)
+    }
+    console.log({ searchQuery, sort, order })
 
     const results = await db.select().from(albums).all()
     return html(
       <Layout>
         <div>
-          <Header />
-          <SearchPage results={results} />
+          <Header query={query} />
+          <SearchPage results={results} query={query} />
         </div>
       </Layout>
     )
