@@ -5,8 +5,9 @@ import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
-import { Albums, albums } from './db/schema'
+import { albums } from './db/schema'
 import { db } from './db'
+import { getTableColumns, ilike, or, eq} from 'drizzle-orm'
 
 // Daph changes:
 
@@ -65,14 +66,20 @@ const app = new Elysia()
     )
   })
   .get('/search', async ({ html, query }) => {
-    const searchQuery = query.q
-
+    const searchQuery = query.q as string
     const results = await db.select().from(albums).all()
+
+    const filteredResults = results.filter((album) => album.title.includes(searchQuery) || album.artist.includes(searchQuery))
+    console.log("filtered results", filteredResults);
+    
+    // TODO: figure out why this db drizzle doesn't wizzle on the htmxsizzle
+//  const dbResults = await db.select().from(albums).where(ilike(albums.artist, `${searchQuery}`)).all()
+//  console.log("dbresults", dbResults)
     return html(
       <Layout>
         <div>
           <Header />
-          <SearchPage results={results} />
+          <SearchPage results={filteredResults} />
         </div>
       </Layout>
     )
