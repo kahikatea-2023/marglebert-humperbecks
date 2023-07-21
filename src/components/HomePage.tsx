@@ -10,7 +10,11 @@ export function HomePage({ albums }: { albums: Album[] }) {
         <div class="grid grid-cols-2 gap-4 p-3">
           {albums.map((album) => (
             <div class="flex p-3 bg-gray-200 gap-4">
-              <img src={album.img} alt={album.title} class="w-40" />
+              <img
+                src={album.img}
+                alt={album.title}
+                class="w-40 h-40 aspect-square"
+              />
               <div class="flex flex-col gap-2">
                 <div>
                   <p class="text-orange-700">{album.title}</p>
