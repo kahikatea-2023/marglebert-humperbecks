@@ -33,9 +33,8 @@ const app = new Elysia()
     )
   }
   )
-  // .post('/search', ({html}) =>
-  // Returns a re-directs:
-  // add if condition if the q param exists or not
+
+  // Returns a re-directs???
     .post('/search', ({query}) => {
       const albums = ['a', 'b', 'c', 'd']
       // ATTEMPT 2
@@ -69,9 +68,6 @@ const app = new Elysia()
     }
       
     
-    // 1. create fake array in get route and check that the search params -> route works using filter through an array 
-      // 2. Hook this up to the DB
-
   // From todos BETH example repo
     //   async ({ params }) => {
     //     const oldTodo = await db
@@ -94,7 +90,7 @@ const app = new Elysia()
     //   }
     // )
 
-    // From the hypermedia book: 
+  // From the hypermedia book: 
       // @app.route("/contacts")
       // def contacts():
       // search = request.args.get("q")
