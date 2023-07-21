@@ -10,10 +10,10 @@ export function Card({
   availability,
 }: Album) {
   return (
-    <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
+    <div class="flex flex-1 justify-between border-solid p-2 border-2 border-gray-600">
       {/* Img div */}
       <div class="border-solid border-2 border-gray-400 w-20 h-20">
-        <img src={`${img}`} alt="spinning record gif" />
+        <img src={img} alt="spinning record gif" />
       </div>
       {/* Text div */}
       <div class="w-3/4">
