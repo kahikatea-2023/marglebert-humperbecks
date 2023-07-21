@@ -2,67 +2,71 @@ import * as elements from 'typed-html'
 
 export function Aside() {
   return (
-    <nav class="sidenav">
+    <nav class="flex flex-col gap-3">
       <ul>
         <li>
-          <h3>Home</h3>
+          <h3 class="bg-gray-300 rounded-tl rounded-tr font-light pl-2">
+            Home
+          </h3>
         </li>
 
-        <li class="bestversions">
+        <li>
           <a href="/classical/best-versions/">Best Versions</a>
         </li>
-        <li class="sets">
+        <li>
           <a href="/classical/sets/">Boxed Sets</a>
         </li>
-        <li class="specials">
+        <li>
           <a href="/classical/specials/">Naxos 2023 releases</a>
         </li>
-        <li class="spotlight">
+        <li>
           <a href="/classical/spotlight/">Classical Award Winners</a>
         </li>
-        <li class="rare">
+        <li>
           <a href="/classical/rare/">Marbecks Collectables</a>
         </li>
 
-        <li class="specials">
+        <li>
           <a href="/cd/specials/">On Sale</a>
         </li>
-        <li class="spotlight">
+        <li>
           <a href="/cd/spotlight/">Hidden Treasures</a>
         </li>
-        <li class="rare">
+        <li>
           <a href="/cd/rare/">Rare &amp; Collectable</a>
         </li>
 
-        <li class="specials">
+        <li>
           <a href="/dvd/specials/">Must Watch!</a>
         </li>
 
-        <li class="vouchers">
+        <li>
           <a href="/vouchers/">Gift Vouchers</a>
         </li>
-        <li class="hardware">
+        <li>
           <a href="/hardware/">Accessories</a>
         </li>
-        <li class="storage">
+        <li>
           <a href="/hardware/storage/">Storage</a>
         </li>
       </ul>
 
-      <ul class="misc">
+      <ul>
         <li>
-          <h3>Info</h3>
+          <h3 class="bg-gray-300 rounded-tl rounded-tr font-light pl-2">
+            Info
+          </h3>
         </li>
-        <li class="info">
+        <li>
           <a href="/info/">Info / Help</a>
         </li>
-        <li class="newsletters">
+        <li>
           <a href="/newsletters/">Newsletters</a>
         </li>
-        <li class="about">
+        <li>
           <a href="/about/">About Us</a>
         </li>
-        <li class="privacy">
+        <li>
           <a href="/privacy/">Privacy</a>
         </li>
       </ul>
