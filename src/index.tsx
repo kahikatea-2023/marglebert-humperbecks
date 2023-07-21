@@ -36,17 +36,18 @@ const app = new Elysia()
       return html(<Card {...results[0]} />)
     }
     console.log({ searchQuery, sort, order })
-
-    // const results = await db.select().from(albums).all()
-
-    // const filteredResults = results.filter((album) => album.title.includes(searchQuery) || album.artist.includes(searchQuery))
-    // console.log("filtered results", filteredResults);
-
-    // TODO: figure out why this db drizzle doesn't wizzle on the htmxsizzle
     const dbResults = await db
       .select()
       .from(albums)
-      .where(like(albums.artist, `%dean%`))
+      .where(
+        or(
+          like(albums.title, `%${searchQuery}%`),
+          like(albums.artist, `%${searchQuery}%`),
+          like(albums.availability, `%${searchQuery}%`),
+          like(albums.releaseDate, `%${searchQuery}%`),
+          like(albums.description, `%${searchQuery}%`)
+        )
+      )
       .all()
 
     return html(
