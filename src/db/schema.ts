@@ -11,6 +11,7 @@ export const albums = sqliteTable('albums', {
   format: text('format').notNull(),
   availability: integer('availability', { mode: 'boolean' }),
   img: text('img').notNull(),
+  description: text('description').notNull(),
 })
 
 // This is handy type that can be used for insert and select
