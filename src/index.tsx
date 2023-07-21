@@ -5,6 +5,8 @@ import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 
+// Daph changes: 
+
 const app = new Elysia()
   .use(html())
   .get('/', ({ html }) =>
