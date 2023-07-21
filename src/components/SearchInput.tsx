@@ -3,7 +3,7 @@ import * as elements from 'typed-html'
 export function SearchInput() {
   return (
     <div class="flex flex-row justify-end">
-      <form action="/search" method="post">
+      <form action="/search" method="get">
         <label for="search-input">Search</label>
         <input
           id="search-input"
