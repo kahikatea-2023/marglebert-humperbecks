@@ -5,21 +5,64 @@ import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
+import { Albums } from './db/schema'
 
 // Daph changes:
 
 const app = new Elysia()
   .use(html())
-  .get('/', ({ html }) =>
-    html(
+  .get('/', ({ html }) => {
+    const albums: Albums[] = [
+      {
+        id: 1,
+        title: 'The Miseducation of Lauryn Hill',
+        artist: 'Lauryn Hill',
+        price: 12.99,
+        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
+        availability: false,
+        format: 'Vinyl',
+        releaseDate: 1998,
+      },
+      {
+        id: 2,
+        title: 'The Miseducation of Lauryn Hill',
+        artist: 'Lauryn Hill',
+        price: 12.99,
+        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
+        availability: false,
+        format: 'Vinyl',
+        releaseDate: 1998,
+      },
+      {
+        id: 3,
+        title: 'The Miseducation of Lauryn Hill',
+        artist: 'Lauryn Hill',
+        price: 12.99,
+        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
+        availability: false,
+        format: 'Vinyl',
+        releaseDate: 1998,
+      },
+      {
+        id: 4,
+        title: 'The Miseducation of Lauryn Hill',
+        artist: 'Lauryn Hill',
+        price: 12.99,
+        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
+        availability: false,
+        format: 'Vinyl',
+        releaseDate: 1998,
+      },
+    ]
+    return html(
       <Layout>
         <div>
           <Header />
-          <HomePage />
+          <HomePage albums={albums} />
         </div>
       </Layout>
     )
-  )
+  })
   .get('/search', ({ html }) => {
     // const searchQuery = 'a'
     // const albums = ['a', 'b', 'c', 'd']
@@ -38,7 +81,7 @@ const app = new Elysia()
   // add if condition if the q param exists or not
   .post(
     '/search',
-    ({ html }) => {
+    ({ html, query }) => {
       // TODO - figure out why this doesn't work...?
       const searchQuery = query.q
       const fakeSearch = 'a'
