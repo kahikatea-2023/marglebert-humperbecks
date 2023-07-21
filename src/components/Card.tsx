@@ -1,7 +1,14 @@
 import * as elements from 'typed-html'
 import { Album } from '../db/schema'
 
-export function Card({ img, artist, title, releaseDate }: Album) {
+export function Card({
+  img,
+  artist,
+  title,
+  releaseDate,
+  price,
+  availability,
+}: Album) {
   return (
     <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
       {/* Img div */}
@@ -15,11 +22,17 @@ export function Card({ img, artist, title, releaseDate }: Album) {
       </div>
       {/* Buttons on end */}
       <div>
-        <button class="rounded p-1 bg-gray-200 border-solid border-2 border-gray-600">
-          Add to Cart
-        </button>
-        <p>Price</p>
-        <p>Stock</p>
+        {availability ? (
+          <button class="rounded p-1 bg-gray-200 border-solid border-2 border-gray-600">
+            Add to Cart
+          </button>
+        ) : null}
+        <p>
+          Price <span>${price}</span>
+        </p>
+        <p class={availability ? 'text-green-600' : 'text-red-600'}>
+          {availability ? 'In Stock' : 'Out of Stock'}
+        </p>
       </div>
     </div>
   )
