@@ -1,13 +1,7 @@
 import * as elements from 'typed-html'
 import { Albums } from '../db/schema'
 
-export function HomePage({
-  children,
-  albums,
-}: {
-  children?: any
-  albums: Albums[]
-}) {
+export function HomePage({ albums }: { albums: Albums[] }) {
   return (
     <div class="flex flex-row">
       <aside class="bg-slate-300 basis-1/12">Aside</aside>
