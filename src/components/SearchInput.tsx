@@ -15,7 +15,7 @@ export function SearchInput(props: Props) {
           type="search"
           name="q"
           placeholder="Search for an album"
-          value={props.query?.q as string}
+          value={props.query ? (props.query.q as string) : ''}
         />
         <button class="border-solid border-2 border-gray-400">Search</button>
       </form>
