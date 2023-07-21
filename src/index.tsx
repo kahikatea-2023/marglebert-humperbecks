@@ -6,61 +6,21 @@ import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
 import { Album, albums } from './db/schema'
-import { db } from './db'
 import { Card } from './components/Card'
+import { db } from './db'
+import { getTableColumns, ilike, or, eq, like } from 'drizzle-orm'
 
 // Daph changes:
 
 const app = new Elysia()
   .use(html())
-  .get('/', ({ html }) => {
-    const albums: Album[] = [
-      {
-        id: 1,
-        title: 'The Miseducation of Lauryn Hill',
-        artist: 'Lauryn Hill',
-        price: 12.99,
-        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
-        availability: false,
-        format: 'Vinyl',
-        releaseDate: 1998,
-      },
-      {
-        id: 2,
-        title: 'The Miseducation of Lauryn Hill',
-        artist: 'Lauryn Hill',
-        price: 12.99,
-        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
-        availability: false,
-        format: 'Vinyl',
-        releaseDate: 1998,
-      },
-      {
-        id: 3,
-        title: 'The Miseducation of Lauryn Hill',
-        artist: 'Lauryn Hill',
-        price: 12.99,
-        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
-        availability: false,
-        format: 'Vinyl',
-        releaseDate: 1998,
-      },
-      {
-        id: 4,
-        title: 'The Miseducation of Lauryn Hill',
-        artist: 'Lauryn Hill',
-        price: 12.99,
-        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
-        availability: false,
-        format: 'Vinyl',
-        releaseDate: 1998,
-      },
-    ]
+  .get('/', async ({ html }) => {
+    const rows: Album[] = await db.select().from(albums).all()
     return html(
       <Layout>
         <div>
           <Header />
-          <HomePage albums={albums} />
+          <HomePage albums={rows} />
         </div>
       </Layout>
     )
@@ -77,12 +37,23 @@ const app = new Elysia()
     }
     console.log({ searchQuery, sort, order })
 
-    const results = await db.select().from(albums).all()
+    // const results = await db.select().from(albums).all()
+
+    // const filteredResults = results.filter((album) => album.title.includes(searchQuery) || album.artist.includes(searchQuery))
+    // console.log("filtered results", filteredResults);
+
+    // TODO: figure out why this db drizzle doesn't wizzle on the htmxsizzle
+    const dbResults = await db
+      .select()
+      .from(albums)
+      .where(like(albums.artist, `%dean%`))
+      .all()
+
     return html(
       <Layout>
         <div>
           <Header query={query} />
-          <SearchPage results={results} query={query} />
+          <SearchPage results={dbResults} query={query} />
         </div>
       </Layout>
     )
