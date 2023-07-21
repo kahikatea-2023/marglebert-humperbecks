@@ -22,10 +22,7 @@ export function SearchPage({ results }: { results: Album[] }) {
               <div class="flex flex-row flex-1 justify-between border-solid p-2 border-2 border-gray-600">
                 {/* Img div */}
                 <div class="border-solid border-2 border-gray-400 w-20 h-20">
-                  <img
-                    src="https://github.com/kahikatea-2023/marglebert-humperbecks/blob/main/src/public/record.gif?raw=true"
-                    alt="spinning record gif"
-                  />
+                  <img src={`${img}`} alt="spinning record gif" />
                 </div>
                 {/* Text div */}
                 <div class="w-3/4">
