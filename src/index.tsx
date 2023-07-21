@@ -11,8 +11,10 @@ const app = new Elysia()
   .get('/', ({ html }) =>
     html(
       <Layout>
-        <Header />
-        <HomePage />
+        <div>
+          <Header />
+          <HomePage />
+        </div>
       </Layout>
     )
   )
