@@ -40,7 +40,7 @@ const app = new Elysia()
     '/search',
     ({ html }) => {
       // TODO - figure out why this doesn't work...?
-      const searchQuery = request.args.get('q')
+      const searchQuery = query.q
       const fakeSearch = 'a'
       const albums = ['a', 'b', 'c', 'd']
       const filteredResults = albums.filter((album) => album == fakeSearch)
