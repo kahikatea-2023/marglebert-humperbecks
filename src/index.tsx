@@ -75,7 +75,7 @@ const app = new Elysia()
   }
   )
 
-  // Returns a re-directs???
+  // Returns a re-direct to the get route??????? BUT HOW DOES IT KNOW TO ONLY SHOW THE FILTERED ALBUMS.... 
     .post('/search', ({query}) => {
       const albums = ['a', 'b', 'c', 'd']
       // ATTEMPT 2
