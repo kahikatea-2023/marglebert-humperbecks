@@ -23,38 +23,53 @@ const app = new Elysia()
     )
   )
   .get('/search', ({html}) => {
-    // const searchQuery = 'a'
-    // const albums = ['a', 'b', 'c', 'd']
-    // const filteredResults = albums.filter(album => album == searchQuery)
-    // return html(
-    //   <Layout>
-    //       <body class="bg-slate-300">
-    //         <Header />
-    //         <SearchPage {...filteredResults}/>
-    //       </body>
-    //     </Layout>
-    // )
+    return html(
+      <Layout>
+          <body class="bg-slate-300">
+            <Header />
+            <SearchPage/>
+          </body>
+        </Layout>
+    )
   }
   )
   // .post('/search', ({html}) =>
   // Returns a re-directs:
   // add if condition if the q param exists or not
-    .post('/search', ({html}) => {
-      // TODO - figure out why this doesn't work...?
-      const searchQuery = request.args.get("q")
-      const fakeSearch = "a"
+    .post('/search', ({query}) => {
       const albums = ['a', 'b', 'c', 'd']
-      const filteredResults = albums.filter(album => album == fakeSearch)
-      return html(
-        <Layout>
-            <body class="bg-slate-300">
-              <Header />
-              <SearchPage {...filteredResults}/>
-            </body>
-          </Layout>
-      )
+      // ATTEMPT 2
+      if (typeof query === "string") {
+        const filteredResults = albums.filter(album => album == query)
+        return filteredResults
+        // DB version would be like this: 
+        // contacts = await db.searchContacts(query)
+      }
+      else {
+        const allAlbums = [...albums]
+        return allAlbums
+        // DB version would be like this: 
+        // contacts = await db.getAllContacts()
+      }
+
+      // ATTEMPT 1
+      // const searchQuery = request.args.get("q")
+      // const fakeSearch = "a"
+      // const albums = ['a', 'b', 'c', 'd']
+      // const filteredResults = albums.filter(album => album == fakeSearch)
+
+      // return html(
+      //   <Layout>
+      //       <body class="bg-slate-300">
+      //         <Header />
+      //         <SearchPage {...filteredResults}/>
+      //       </body>
+      //     </Layout>
+      // )
     }
-      // 1. create fake array in get route and check that the search params -> route works using filter through an array 
+      
+    
+    // 1. create fake array in get route and check that the search params -> route works using filter through an array 
       // 2. Hook this up to the DB
 
   // From todos BETH example repo
