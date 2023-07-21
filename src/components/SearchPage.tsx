@@ -17,11 +17,10 @@ export function SearchPage({
         <section>
           <button>Sort by</button>
         </section>
-        {/* Card List */}
         <div class="text-left">
-          <a href={`/search?q=${query.q}&sort=artist`}>artist</a>
-          <a href={`/search?q=${query.q}&sort=title`}>title</a>
-          <a href={`/search?q=${query.q}&sort=price`}>price</a>
+          <a href={`/search?q=${query.q}&sort=artist`}>Artist</a>
+          <a href={`/search?q=${query.q}&sort=title`}>Title</a>
+          <a href={`/search?q=${query.q}&sort=price`}>Price</a>
           <a href={`/search?q=${query.q}&sort=releaseDate`}>Release Date</a>
           <a href={`/search?q=${query.q}&sort=format`}>Format</a>
           <a href={`/search?q=${query.q}&sort=availability`}>Availability</a>
