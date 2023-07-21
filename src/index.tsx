@@ -26,20 +26,12 @@ const app = new Elysia()
     )
   })
   .get('/search', async ({ html, query, headers }) => {
-    const searchQuery = query.q
-    const sort = query.sort
-    const order = query.order
+    const searchQuery = query.q as string
+    const sort = query.sort as string
 
-    console.log({ sort, order })
-    if (headers['hx-request'] === 'true') {
-      const results = await db.select().from(albums).all()
-      return html(<Card {...results[0]} />)
-    }
-    console.log({ searchQuery, sort, order })
-    const dbResults = await db
-      .select()
-      .from(albums)
-      .where(
+    const dbQuery = db.select().from(albums)
+    if (searchQuery.length > 0) {
+      dbQuery.where(
         or(
           like(albums.title, `%${searchQuery}%`),
           like(albums.artist, `%${searchQuery}%`),
@@ -48,13 +40,28 @@ const app = new Elysia()
           like(albums.description, `%${searchQuery}%`)
         )
       )
-      .all()
+    }
+
+    const validSorts = [
+      'artist',
+      'title',
+      'releaseDate',
+      'format',
+      'availability',
+      'price',
+    ]
+
+    if (validSorts.includes(sort)) {
+      dbQuery.orderBy((albums as any)[sort]) // this is a hack
+    }
+
+    let result: Album[] = await dbQuery.all()
 
     return html(
       <Layout>
         <div>
           <Header query={query} />
-          <SearchPage results={dbResults} query={query} />
+          <SearchPage results={result} query={query} />
         </div>
       </Layout>
     )
