@@ -8,17 +8,18 @@ export function Card({
   releaseDate,
   price,
   availability,
+  description,
 }: Album) {
   return (
     <div class="flex flex-1 justify-between border-solid p-2 border-2 border-gray-600">
       {/* Img div */}
-      <div class="border-solid border-2 border-gray-400 w-20 h-20">
+      <div class="border-solid border-2 border-gray-400 w-40 h-40">
         <img src={img} alt="spinning record gif" />
       </div>
       {/* Text div */}
       <div class="w-3/4">
-        <p>{artist}</p>
-        <p>{title}</p>({releaseDate})<p>Description</p>
+        <p class="text-orange-400">{artist}</p>
+        <p class="italic">{title}</p>({releaseDate})<p>{description}</p>
       </div>
       {/* Buttons on end */}
       <div>
