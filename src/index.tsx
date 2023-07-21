@@ -61,8 +61,7 @@ const app = new Elysia()
           <HomePage albums={albums} />
         </div>
       </Layout>
-    )
-  )
+    )})
   .get('/search', ({html}) => {
     return html(
       <Layout>
@@ -77,6 +76,10 @@ const app = new Elysia()
 
   // Returns a re-direct to the get route??????? BUT HOW DOES IT KNOW TO ONLY SHOW THE FILTERED ALBUMS.... 
     .post('/search', ({query}) => {
+      console.log("query", query)
+      // const searchQuery = request.args.get("q")
+      // console.log("searhQuery", searchQuery);
+      
       const albums = ['a', 'b', 'c', 'd']
       // ATTEMPT 2
       if (typeof query === "string") {
