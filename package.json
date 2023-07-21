@@ -12,6 +12,7 @@
     "db:seed": "bun run src/db/seed.ts"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "bun-types": "latest"
   },
   "peerDependencies": {

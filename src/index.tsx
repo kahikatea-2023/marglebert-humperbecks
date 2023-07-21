@@ -4,6 +4,8 @@ import * as elements from 'typed-html'
 import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
+import { SearchInput } from './components/SearchInput'
+import { HomePage } from './components/HomePage'
 
 // Daph changes: 
 
@@ -15,8 +17,7 @@ const app = new Elysia()
         <body class="bg-slate-300">
           <Header />
           {/* TODO: Will need to add a HomePage component here */}
-          {/* <HomePage/> */}
-          {/* <SearchInput/> */}
+          <HomePage />
         </body>
       </Layout>
     )
