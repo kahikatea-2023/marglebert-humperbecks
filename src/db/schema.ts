@@ -10,8 +10,8 @@ export const albums = sqliteTable('albums', {
   price: real('price').notNull(),
   format: text('format').notNull(),
   availability: integer('availability', { mode: 'boolean' }),
-  img: text('format').notNull(),
+  img: text('img').notNull(),
 })
 
 // This is handy type that can be used for insert and select
-export type Albums = InferModel<typeof albums>
+export type Album = InferModel<typeof albums>
