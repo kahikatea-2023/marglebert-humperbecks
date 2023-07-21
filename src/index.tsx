@@ -5,7 +5,8 @@ import { Layout } from './layout'
 import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
-import { Albums } from './db/schema'
+import { Albums, albums } from './db/schema'
+import { db } from './db'
 
 // Daph changes:
 
@@ -63,21 +64,10 @@ const app = new Elysia()
       </Layout>
     )
   })
-  .get('/search', ({ html, query }) => {
+  .get('/search', async ({ html, query }) => {
     const searchQuery = query.q
 
-    const results: Albums[] = [
-      {
-        id: 1,
-        title: 'The Miseducation of Lauryn Hill',
-        artist: 'Lauryn Hill',
-        price: 12.99,
-        img: 'https://upload.wikimedia.org/wikipedia/en/7/7a/The_Miseducation_of_Lauryn_Hill.jpg',
-        availability: false,
-        format: 'Vinyl',
-        releaseDate: 1998,
-      },
-    ]
+    const results = await db.select().from(albums).all()
     return html(
       <Layout>
         <div>
