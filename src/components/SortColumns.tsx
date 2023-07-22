@@ -12,7 +12,7 @@ export function SortColumns({ query }: { query: Record<string, unknown> }) {
   ]
 
   return (
-    <div>
+    <div class="flex space-x-4">
       <section>
         <h3>Sort by</h3>
       </section>
@@ -23,7 +23,7 @@ export function SortColumns({ query }: { query: Record<string, unknown> }) {
               query.direction === 'desc' ? 'asc' : 'desc'
             }`}
           >
-            <span class="capitalize">{column}</span>
+            <span class="capitalize font-semibold">{column}</span>
             {column === query.sort ? (
               <i class={`fas fa-sort-${query.direction}`}></i>
             ) : null}
