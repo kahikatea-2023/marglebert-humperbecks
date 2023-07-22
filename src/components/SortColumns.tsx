@@ -24,6 +24,9 @@ export function SortColumns({ query }: { query: Record<string, unknown> }) {
             }`}
           >
             <span class="capitalize">{column}</span>
+            {column === query.sort ? (
+              <i class={`fas fa-sort-${query.direction}`}></i>
+            ) : null}
           </Link>
         ))}
       </div>
