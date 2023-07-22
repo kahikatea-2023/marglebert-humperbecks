@@ -14,7 +14,7 @@ export const Layout = ({ children }: elements.Children) => `
   <link href="/styles.css" rel="stylesheet">
 </head>
 
-<body class="px-10" hx-boost="true">
+<body class="px-10 w-10/12 mx-auto" hx-boost="true">
   ${children}
 </body>
 `
