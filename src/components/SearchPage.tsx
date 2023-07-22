@@ -2,6 +2,7 @@ import * as elements from 'typed-html'
 import { Album } from '../db/schema'
 import { Card } from './Card'
 import { SortColumns } from './SortColumns'
+import { Link } from './Link'
 
 export function SearchPage({
   results,
@@ -24,13 +25,13 @@ export function SearchPage({
               <h4 class="bg-gray-300">Format</h4>
               <ul>
                 <li>
-                  <a href={`/search?q=${query.q}&format=2 LP`}>2 LP</a>
+                  <Link href={`/search?q=${query.q}&format=2 LP`}>2 LP</Link>
                 </li>
                 <li>
-                  <a href={`/search?q=${query.q}&format=CD`}>CD</a>
+                  <Link href={`/search?q=${query.q}&format=CD`}>CD</Link>
                 </li>
                 <li>
-                  <a href={`/search?q=${query.q}&format=LP`}>LP</a>
+                  <Link href={`/search?q=${query.q}&format=LP`}>LP</Link>
                 </li>
               </ul>
             </div>

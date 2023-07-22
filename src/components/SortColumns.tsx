@@ -1,5 +1,5 @@
 import * as elements from 'typed-html'
-import { Link } from './SortColumn'
+import { Link } from './Link'
 
 export function SortColumns({ query }: { query: Record<string, unknown> }) {
   const columns = [
