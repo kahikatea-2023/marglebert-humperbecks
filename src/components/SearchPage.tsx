@@ -20,18 +20,22 @@ export function SearchPage({
           <aside>
             <h3>Filter by</h3>
             <div>
-              <h4>Format</h4>
+              <h4 class="bg-gray-300">Format</h4>
               <ul>
                 <li>
-                  <a href={`/search?q=${query.q}&format=vinyl`}>Vinyl</a>
+                  <a href={`/search?q=${query.q}&format=2 LP`}>2 LP</a>
                 </li>
                 <li>
-                  <a href={`/search?q=${query.q}&format=cd`}>CD</a>
+                  <a href={`/search?q=${query.q}&format=CD`}>CD</a>
                 </li>
                 <li>
-                  <a href={`/search?q=${query.q}&format=cassette`}>Cassette</a>
+                  <a href={`/search?q=${query.q}&format=LP`}>LP</a>
                 </li>
               </ul>
+            </div>
+            <div>
+              <label for="price">Price</label>
+              <input type="range" id="price" name="price" min="0" max="11" />
             </div>
           </aside>
           <div
