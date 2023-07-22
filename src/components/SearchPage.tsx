@@ -1,6 +1,7 @@
 import * as elements from 'typed-html'
 import { Album } from '../db/schema'
 import { Card } from './Card'
+import { SortColumns } from './SortColumns'
 
 export function SearchPage({
   results,
@@ -42,54 +43,7 @@ export function SearchPage({
             id="results"
             class="grow flex flex-col p-3 border-solid border-2 border-gray-400"
           >
-            <section>
-              <button>Sort by</button>
-            </section>
-            <div class="text-left">
-              <a
-                href={`/search?q=${query.q}&sort=artist&direction=${
-                  query.direction === 'desc' ? 'asc' : 'desc'
-                }
-              `}
-              >
-                Artist
-              </a>
-              <a
-                href={`/search?q=${query.q}&sort=title&direction=${
-                  query.direction === 'desc' ? 'asc' : 'desc'
-                }`}
-              >
-                Title
-              </a>
-              <a
-                href={`/search?q=${query.q}&sort=price&direction=${
-                  query.direction === 'desc' ? 'asc' : 'desc'
-                }`}
-              >
-                Price
-              </a>
-              <a
-                href={`/search?q=${query.q}&sort=releaseDate&direction=${
-                  query.direction === 'desc' ? 'asc' : 'desc'
-                }`}
-              >
-                Release Date
-              </a>
-              <a
-                href={`/search?q=${query.q}&sort=format&direction=${
-                  query.direction === 'desc' ? 'asc' : 'desc'
-                }`}
-              >
-                Format
-              </a>
-              <a
-                href={`/search?q=${query.q}&sort=availability&direction=${
-                  query.direction === 'desc' ? 'asc' : 'desc'
-                }`}
-              >
-                Availability
-              </a>
-            </div>
+            <SortColumns query={query} />
             {results.map((result) => (
               <Card {...result} />
             ))}
