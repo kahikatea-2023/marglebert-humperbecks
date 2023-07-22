@@ -16,9 +16,11 @@ export function Header(props: Props) {
               alt="spinning record gif"
             />
           </div>
-          <h1 class="text-7xl font-bold leading-tight text-gray-900">
-            Marbecks
-          </h1>
+          <a href="/">
+            <h1 class="text-7xl font-bold leading-tight text-gray-900">
+              Marbecks
+            </h1>
+          </a>
           <div>
             <h1 class="text-3xl font-bold leading-tight text-gray-900 tracking-tighter">
               RECORD SHOP
