@@ -10,12 +10,13 @@ export function SortColumns({ query }: { query: Record<string, unknown> }) {
     'availability',
     'price',
   ]
+
   return (
     <div>
       <section>
-        <button>Sort by</button>
+        <h3>Sort by</h3>
       </section>
-      <div class="text-left">
+      <div class="space-x-3">
         {columns.map((column) => (
           <Link
             href={`/search?q=${query.q}&sort=${column}&direction=${
