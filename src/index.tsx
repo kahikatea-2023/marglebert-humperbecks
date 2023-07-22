@@ -83,7 +83,7 @@ const app = new Elysia()
   })
   // no need to have a public folder
   // this route will serve the css as a static file
-  .get('/styles.css', () => Bun.file('./src/input.css'))
+  .get('/styles.css', () => Bun.file('./src/styles/output.css'))
   .listen(3000)
 
 console.log(
