@@ -7,7 +7,7 @@ import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
 import { Album, albums } from './db/schema'
 import { db } from './db'
-import { or, eq, like, and } from 'drizzle-orm'
+import { or, eq, like, and, asc, desc } from 'drizzle-orm'
 
 const app = new Elysia()
   .use(html())
@@ -22,11 +22,10 @@ const app = new Elysia()
       </Layout>
     )
   })
-  .get('/search', async ({ html, query, headers }) => {
+  .get('/search', async ({ html, query }) => {
     const searchQuery = query.q as string
     const sort = query.sort as string
-
-    const dbQuery = db.select().from(albums)
+    let dbQuery = db.select().from(albums)
 
     // collect all conditions if query values are present
     const conditions = []
@@ -64,8 +63,13 @@ const app = new Elysia()
     ]
 
     if (columns.includes(sort)) {
-      dbQuery.orderBy((albums as any)[sort]) // this is a hack
+      dbQuery.orderBy(
+        query.direction === 'desc'
+          ? asc((albums as any)[sort])
+          : desc((albums as any)[sort])
+      )
     }
+
     let result: Album[] = await dbQuery.all()
 
     return html(
