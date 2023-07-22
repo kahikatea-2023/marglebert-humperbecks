@@ -6,11 +6,8 @@ import { Header } from './components/Header'
 import { SearchPage } from './components/SearchPage'
 import { HomePage } from './components/HomePage'
 import { Album, albums } from './db/schema'
-import { Card } from './components/Card'
 import { db } from './db'
-import { getTableColumns, ilike, or, eq, like } from 'drizzle-orm'
-
-// Daph changes:
+import { or, eq, like, and } from 'drizzle-orm'
 
 const app = new Elysia()
   .use(html())
@@ -30,8 +27,12 @@ const app = new Elysia()
     const sort = query.sort as string
 
     const dbQuery = db.select().from(albums)
+
+    // collect all conditions if query values are present
+    const conditions = []
+
     if (searchQuery.length > 0) {
-      dbQuery.where(
+      conditions.push(
         or(
           like(albums.title, `%${searchQuery}%`),
           like(albums.artist, `%${searchQuery}%`),
@@ -42,7 +43,18 @@ const app = new Elysia()
       )
     }
 
-    const validSorts = [
+    if (query.format) {
+      conditions.push(eq(albums.format, query.format as string))
+    }
+
+    if (query.price) {
+      conditions.push(eq(albums.price, query.price as number))
+    }
+
+    // Apply all conditions to the query
+    dbQuery.where(and(...conditions))
+
+    const columns = [
       'artist',
       'title',
       'releaseDate',
@@ -51,10 +63,9 @@ const app = new Elysia()
       'price',
     ]
 
-    if (validSorts.includes(sort)) {
+    if (columns.includes(sort)) {
       dbQuery.orderBy((albums as any)[sort]) // this is a hack
     }
-
     let result: Album[] = await dbQuery.all()
 
     return html(
